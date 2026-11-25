@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://pyscript.net/releases/2026.7.3/core.css">
+  <script type="module" src="https://pyscript.net/releases/2026.7.3/core.js"></script>
+  <title>Quarter 2 Seatwork - Marching Band</title>
+  <style>
+    body {
+      min-height: 100vh;
+      margin: 0;
+      color: #20281e;
+      font-family: Arial, sans-serif;
+      background-color: #f3f2df;
+      background-image:
+        repeating-linear-gradient(135deg, rgba(37, 78, 49, 0.035) 0 1px, transparent 1px 13px),
+        linear-gradient(120deg, #f5ef9d, #f8f8ef 60%, #dce9d4);
+    }
+    nav {
+      background-color: #23395d;
+      color: white;
+      padding: 10px 20px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+    }
+
+    .navbar-brand {
+      color: white;
+      text-decoration: none;
+    }
+    nav a:hover,
+    .navbar-brand:hover {
+      color: #dbe7ff;
+    }
+    .navbar-toggler {
+      border: 1px solid white;
+    }
+    .navbar-toggler-icon {
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255,255,255,1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    }
+    .marching-page {
+      min-height: calc(100vh - 72px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 24px;
+    }
+    main {
+      width: min(100%, 440px);
+      padding: 38px;
+      border: 1px solid #e9da07;
+      border-top: 5px solid #f3df05;
+      border-radius: 10px;
+      background: #fffef8;
+      box-shadow: 0 22px 60px rgba(42, 58, 31, 0.14);
+      animation: arrive 500ms ease-out both;
+    }
+    .eyebrow {
+      display: inline-block;
+      margin: 0 0 12px;
+      color: #8a8b00;
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-decoration: underline;
+      text-underline-offset: 4px;
+      text-transform: uppercase;
+    }
+    h1 { margin: 0; color: #24452e; font-family: Arial, sans-serif; font-size: 1.8rem; line-height: 1.2; }
+    .intro { margin: 12px 0 28px; color: #66705e; font-size: 1.08rem; line-height: 1.45; }
+    label { display: block; margin: 16px 0 7px; color: #364233; font-size: 1rem; font-weight: 700; }
+    input {
+      box-sizing: border-box;
+      width: 100%;
+      min-height: 48px;
+      padding: 11px 13px;
+      border: 1px solid #c8d0bf;
+      border-radius: 5px;
+      background: #fff;
+      color: #20281e;
+      font: inherit;
+      font-size: 1rem;
+    }
+    input::placeholder { color: #777777; }
+    input:focus { border-color: #fceb00; outline: none; box-shadow: 0 0 0 3px #dce8c9; }
+    button {
+      width: 100%;
+      min-height: 49px;
+      margin-top: 24px;
+      border: 0;
+      border-radius: 5px;
+      background: #cdc637fd;
+      color: #fff;
+      font: inherit;
+      font-size: 1.05rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    #result { min-height: 24px; margin: 18px 0 0; color: #777400; font-size: 1.02rem; font-weight: 700; }
+    @keyframes arrive { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="index.html">Campus ICT10</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#marchingMenu"
+        aria-controls="marchingMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="marchingMenu">
+        <div class="navbar-nav ms-auto">
+          <a class="nav-link text-white" href="index.html">Home</a>
+          <a class="nav-link text-white" href="element.html">Element Checker</a>
+          <a class="nav-link text-white" href="marching.html">Marching Band</a>
+          <a class="nav-link text-white" href="creator.html">Meet the Creator</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <div class="marching-page">
+    <main>
+      <p class="eyebrow">Quarter 2 Seatwork</p>
+      <h1>Marching Band</h1>
+      <p class="intro">This club has instruments. Enter your name to check membership.</p>
+      <form>
+        <label for="first_name">First name</label>
+        <input type="text" id="first_name" name="first_name" autocomplete="given-name" placeholder="Enter lowercase first name" required>
+        <label for="last_name">Last name</label>
+        <input type="text" id="last_name" name="last_name" autocomplete="family-name" placeholder="Enter lowercase last name" required>
+        <button type="button" py-click="candidate_checker">Check membership</button>
+      </form>
+      <p id="result" aria-live="polite"></p>
+    </main>
+  </div>
+  <script type="py" src="./marching.py"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
